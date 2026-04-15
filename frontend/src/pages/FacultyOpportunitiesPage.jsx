@@ -85,7 +85,6 @@ export default function FacultyOpportunitiesPage() {
     }
   }, [])
 
-
   const validate = (target) => {
     // Check required string fields specifically (skip arrays)
     const requiredStrings = {
@@ -226,27 +225,28 @@ export default function FacultyOpportunitiesPage() {
     <Layout>
       <section className="space-y-6">
         {loading ? (
-          <div className="glass-panel p-12 flex items-center justify-center">
+          <div className="glass-panel p-12 flex items-center justify-center rounded-2xl shadow-md">
             <Spinner />
           </div>
         ) : (
           <>
-            <div className="glass-panel p-6">
+            <div className="glass-panel p-6 rounded-2xl shadow-md bg-gray-50/50">
               <SectionTitle title="Opportunities" subtitle="Create and manage your opportunities" />
             </div>
             {error && <StatusMessage type="error" message={error} />}
           </>
         )}
 
-        <div className="grid gap-5 xl:grid-cols-[1.2fr_1fr]">
+        <div className="grid gap-6 lg:grid-cols-[1fr_1fr]">
           <OpportunityForm
             value={form}
             onChange={setForm}
             onSubmit={handleSubmit}
             submitLabel={editingId ? 'Save Changes' : 'Create Opportunity'}
+            loading={loading}
           />
-          <div className="glass-panel h-fit p-6">
-            <p className="text-sm text-slate-600">Total Opportunities</p>
+          <div className="glass-panel h-fit p-6 rounded-2xl shadow-md bg-gray-50/50">
+            <p className="text-sm font-semibold text-slate-700">Total Opportunities</p>
             <p className="text-3xl font-bold text-indigo-600">{opportunities.length}</p>
             <p className="mt-3 text-sm text-slate-600">
               Tip: Use short headings, clear eligibility, and direct application links for better student response.
@@ -256,7 +256,7 @@ export default function FacultyOpportunitiesPage() {
         {opportunities.length === 0 ? (
           <EmptyState title="No opportunities created" subtitle="Create your first opportunity using the form above" />
         ) : (
-          <div className="glass-panel p-5">
+          <div className="glass-panel p-5 rounded-2xl shadow-md">
             <div className="mb-4 flex items-center justify-between">
               <h3 className="text-base font-bold text-slate-900">Manage Posted Opportunities</h3>
               <span className="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-600">

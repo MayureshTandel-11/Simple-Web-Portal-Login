@@ -13,14 +13,14 @@ export default function OpportunityForm({ value, onChange, onSubmit, submitLabel
   }
 
   return (
-    <div className="glass-panel p-6 shadow-lg shadow-slate-300/20">
+    <div className="glass-panel p-6 shadow-lg shadow-slate-300/20 rounded-2xl bg-gray-50/50">
       <div className="mb-4 flex items-center justify-between">
-        <h3 className="text-lg font-bold text-slate-900">Opportunity Details</h3>
+        <h3 className="text-lg font-semibold text-slate-900">Opportunity Details</h3>
         <span className="rounded-full bg-indigo-100 px-2.5 py-1 text-xs font-semibold text-indigo-700">Faculty Form</span>
       </div>
-      <div className="grid gap-4">
+      <div className="grid gap-6">
         <div>
-          <label className="label-modern">Announcement Heading</label>
+          <label className="label-modern text-sm font-semibold text-slate-700">Announcement Heading</label>
           <input
             className="input-modern w-full"
             value={value.announcementHeading}
@@ -30,14 +30,14 @@ export default function OpportunityForm({ value, onChange, onSubmit, submitLabel
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           <div>
-            <label className="label-modern">Opportunity Type</label>
+            <label className="label-modern text-sm font-semibold text-slate-700">Opportunity Type</label>
             <select className="input-modern w-full" value={value.type} onChange={(e) => setField('type', e.target.value)}>
               <option>Internship</option>
               <option>Placement</option>
             </select>
           </div>
           <div>
-            <label className="label-modern">Department</label>
+            <label className="label-modern text-sm font-semibold text-slate-700">Department</label>
             <select className="input-modern w-full" value={value.department} onChange={(e) => setField('department', e.target.value)}>
               {DEPARTMENT_OPTIONS.map((dept) => (
                 <option key={dept} value={dept}>
@@ -48,9 +48,9 @@ export default function OpportunityForm({ value, onChange, onSubmit, submitLabel
           </div>
         </div>
         <div>
-          <label className="label-modern">Description</label>
+          <label className="label-modern text-sm font-semibold text-slate-700">Description</label>
           <textarea
-            rows={12}
+            rows={6}
             maxLength={10000}
             className="input-modern w-full"
             value={value.description}
@@ -60,14 +60,14 @@ export default function OpportunityForm({ value, onChange, onSubmit, submitLabel
           />
         </div>
         <div>
-          <label className="label-modern">Last Date</label>
+          <label className="label-modern text-sm font-semibold text-slate-700">Last Date</label>
           <input type="date" min={today} className="input-modern w-full" value={value.lastDate} onChange={(e) => setField('lastDate', e.target.value)} />
         </div>
         <div>
-          <label className="label-modern block mb-3">Eligibility Criteria</label>
+          <label className="label-modern block mb-3 text-sm font-semibold text-slate-700">Eligibility Criteria</label>
           <div className="grid gap-3 md:grid-cols-2">
             {['First Year', 'Second Year', 'Third Year', 'Masters'].map((year) => (
-              <label key={year} className="flex items-center gap-3 rounded-lg border border-slate-200 p-3 cursor-pointer hover:bg-slate-50">
+              <label key={year} className="flex items-center gap-3 rounded-lg border border-slate-200 p-3 cursor-pointer hover:bg-slate-50 transition-colors">
                 <input
                   type="checkbox"
                   checked={value.yearEligibility?.includes(year) || false}
@@ -79,7 +79,7 @@ export default function OpportunityForm({ value, onChange, onSubmit, submitLabel
                       setField('yearEligibility', current.filter((y) => y !== year))
                     }
                   }}
-                  className="rounded w-4 h-4 text-indigo-600 cursor-pointer"
+                  className="rounded w-4 h-4 text-indigo-600 cursor-pointer focus:ring-indigo-500"
                 />
                 <span className="text-sm font-medium text-slate-700">{year}</span>
               </label>
@@ -87,7 +87,7 @@ export default function OpportunityForm({ value, onChange, onSubmit, submitLabel
           </div>
         </div>
         <div>
-          <label className="label-modern">Application Link</label>
+          <label className="label-modern text-sm font-semibold text-slate-700">Application Link</label>
           <input
             className="input-modern w-full"
             type="url"
@@ -96,7 +96,7 @@ export default function OpportunityForm({ value, onChange, onSubmit, submitLabel
             placeholder="https://forms.gle/..."
           />
         </div>
-        <PrimaryButton loading={loading} disabled={loading} onClick={onSubmit} className="w-full md:w-fit">
+        <PrimaryButton loading={loading} disabled={loading} onClick={onSubmit} className="w-full md:w-auto mt-2">
           {submitLabel}
         </PrimaryButton>
       </div>

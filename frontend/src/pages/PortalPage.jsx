@@ -73,9 +73,9 @@ export default function PortalPage() {
   }
 
   return (
-    <div className="flex min-h-screen w-full flex-col bg-slate-50 px-3 py-4 md:px-5 md:py-5">
+    <div className="flex min-h-screen w-full flex-col bg-slate-50 px-3 pt-0 pb-4 md:px-5 md:pt-0 md:pb-5">
       <section className="flex-1 w-full space-y-5">
-        <div className="flex items-center justify-between gap-3">
+        <div className="flex items-center justify-between gap-3 mb-3">
           <MobileMenu>
             <div className="space-y-3">
               <h3 className="text-lg font-bold text-slate-900 mb-4">Menu</h3>
@@ -173,80 +173,6 @@ export default function PortalPage() {
           </div>
         )}
       </section>
-      <Modal
-        isOpen={isModalOpen}
-        onClose={handleModalClose}
-        title={selectedOpportunity?.announcementHeading}
-        type={selectedOpportunity?.type}
-      >
-        <div className="space-y-6">
-          {/* Description Section */}
-          <div className="rounded-lg border border-slate-200 bg-slate-50 p-4">
-            <h3 className="mb-3 flex items-center gap-2 text-lg font-semibold text-slate-900">
-              <span className="text-xl">📄</span>
-              Description
-            </h3>
-            <p className="whitespace-pre-wrap text-slate-700 leading-relaxed">{selectedOpportunity?.description}</p>
-          </div>
-
-          {/* Key Details Grid */}
-          <div className="grid gap-4 md:grid-cols-2">
-            {/* Eligibility */}
-            <div className="rounded-lg border border-slate-200 bg-gradient-to-br from-emerald-50 to-teal-50 p-4">
-              <h3 className="mb-2 flex items-center gap-2 text-sm font-semibold text-slate-900">
-                <span className="text-lg">✓</span>
-                Eligibility
-              </h3>
-              <div className="space-y-2">
-                {selectedOpportunity?.eligibilityCriteria && <p className="text-sm text-slate-700">{selectedOpportunity.eligibilityCriteria}</p>}
-                {selectedOpportunity?.yearEligibility && selectedOpportunity.yearEligibility.length > 0 && (
-                  <div className="flex flex-wrap gap-2">
-                    {selectedOpportunity.yearEligibility.map((year) => (
-                      <span key={year} className="inline-block rounded-full bg-emerald-200 px-2.5 py-1 text-xs font-semibold text-emerald-800">
-                        {year}
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* Deadline */}
-            <div className="rounded-lg border border-slate-200 bg-gradient-to-br from-orange-50 to-red-50 p-4">
-              <h3 className="mb-2 flex items-center gap-2 text-sm font-semibold text-slate-900">
-                <span className="text-lg">📅</span>
-                Deadline
-              </h3>
-              <p className="text-sm font-semibold text-slate-900">{selectedOpportunity && new Date(selectedOpportunity.lastDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
-            </div>
-          </div>
-
-          {/* Department Section */}
-          {selectedOpportunity?.department && (
-            <div className="rounded-lg border border-slate-200 bg-gradient-to-br from-purple-50 to-pink-50 p-4">
-              <h3 className="mb-2 flex items-center gap-2 text-sm font-semibold text-slate-900">
-                <span className="text-lg">🎓</span>
-                Department
-              </h3>
-              <p className="text-sm text-slate-700">{selectedOpportunity.department}</p>
-            </div>
-          )}
-
-          {/* Application Link */}
-          <div className="rounded-lg border-2 border-indigo-200 bg-gradient-to-r from-indigo-50 to-sky-50 p-4">
-            <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold text-slate-900">
-              <span className="text-lg">🔗</span>
-              Application
-            </h3>
-            <a href={selectedOpportunity?.applicationLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-indigo-600 to-sky-500 px-4 py-2 text-sm font-semibold text-white transition hover:brightness-110">
-              Apply Now
-              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
-            </a>
-          </div>
-        </div>
-      </Modal>
       <Footer />
     </div>
   )
