@@ -21,13 +21,13 @@ export default function Navbar({ mode = 'student' }) {
         }}>
           <span className="inline-block h-2.5 w-2.5 rounded-full bg-indigo-500 shadow shadow-indigo-400/80" />
           <span className="hidden sm:inline">Placement Portal</span>
-          <span className="sm:hidden text-base">Portal</span>
+          <span className="sm:hidden text-base">Placement Portal</span>
         </Link>
       ) : (
         <span className="inline-flex items-center gap-2 text-lg font-bold text-slate-900 cursor-default select-none">
           <span className="inline-block h-2.5 w-2.5 rounded-full bg-indigo-500 shadow shadow-indigo-400/80" />
           <span className="hidden sm:inline">Placement Portal</span>
-          <span className="sm:hidden text-base">Portal</span>
+          <span className="sm:hidden text-base">Placement Portal</span>
         </span>
       )}
 
@@ -38,7 +38,7 @@ export default function Navbar({ mode = 'student' }) {
               Student Dashboard
             </Link>
             <Link to="/" className="hidden md:block rounded-lg bg-indigo-600 px-3 py-1.5 text-sm font-semibold text-white transition hover:bg-indigo-700">
-              Back to Landing Page
+              Back
             </Link>
           </>
         ) : (
